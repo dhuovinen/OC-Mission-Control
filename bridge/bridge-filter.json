@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "_comment": "Controls what data the bridge sends to Supabase. Change fields here — no code changes needed.",
+
+  "streams": {
+    "tool": {
+      "enabled": true,
+      "includeToolName": true,
+      "includeDurationMs": true,
+      "includeArgs": false,
+      "includeResult": false,
+      "includePartialResult": false
+    },
+    "assistant": {
+      "enabled": true,
+      "includeDeltas": false,
+      "includeFinalText": false
+    },
+    "lifecycle": {
+      "enabled": true,
+      "includeModel": true,
+      "includeProvider": true,
+      "includeUsage": true
+    }
+  },
+
+  "sessions": {
+    "enabled": true,
+    "includeLabel": true,
+    "includeChannel": true,
+    "syncIntervalSeconds": 30
+  },
+
+  "usage": {
+    "enabled": true,
+    "syncIntervalSeconds": 60,
+    "includeByModel": true,
+    "includeByProvider": true,
+    "includeDailyBreakdown": true,
+    "includeToolBreakdown": true
+  },
+
+  "taskCompletions": {
+    "enabled": true,
+    "includeStatsLine": true,
+    "includeResult": false
+  },
+
+  "heartbeat": {
+    "intervalSeconds": 60
+  },
+
+  "toolAllowlist": null,
+  "toolDenylist": []
+}
