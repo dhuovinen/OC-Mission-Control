@@ -72,6 +72,38 @@ Deploy `ui/dist/` to Vercel, Netlify, or Supabase hosting.
 
 The filter is hot-reloaded on change — no restart required.
 
+## Troubleshooting
+
+### Bridge exits immediately with "SUPABASE_URL and SUPABASE_ANON_KEY must be set"
+
+`tsx` (and plain `node`) do not automatically load `.env` files — they only see
+variables that are exported in the current shell session. The bridge scripts
+pass `--env-file=.env` to handle this, but the flag requires **Node 20 or
+later**.
+
+Check your Node version:
+
+```bash
+node --version   # must be v20.0.0 or higher
+```
+
+If you are on Node 18 or earlier, upgrade Node or export the variables manually
+before running:
+
+```bash
+export SUPABASE_URL=https://your-project.supabase.co
+export SUPABASE_ANON_KEY=your-key
+npm run dev
+```
+
+Also confirm that `bridge/.env` exists (not just `.env.example`):
+
+```bash
+ls -la bridge/.env
+```
+
+---
+
 ## Project structure
 
 ```
